@@ -11,7 +11,7 @@
 <form name="exportXml" method="POST" action="/delegate/XmlServices/export" onsubmit="return validate();">
 	<table>
 		<tr>
-			<td><label>Регулярное выражение:</label></td>
+			<td><label>Кадастровый номер:</label></td>
 			<td><input type="text" name="regularEx"></td>
 		<tr>
 		<tr>
@@ -27,18 +27,8 @@
 	function validate() {
 		valid = true;
 		if (document.exportXml.regularEx.value == "") {
-			alert("Пожалуйста заполните поле 'Регулярное выражение'!");
+			alert("Пожалуйста заполните поле 'Кадастровый номер'!");
 			valid = false;
 		}
-		var div = document.createElement('div');
-		var img = document.createElement('img');
-		img.src = '<%=request.getContextPath()%>/images/loader.gif';
-		div.innerHTML = "Идет формирование xml файлов. Пожалуйста подождите...<br />";
-		div.style.cssText = 'position: fixed; top: 50%; left: 40%; z-index: 5000; width: 422px; text-align: center; background: #EDDBB0; border: 1px solid #000';
-		div.appendChild(img);
-		document.body.appendChild(div);
-		window.event.cancelBubble = true;
-		stopPropagation()
-		return valid;
 	}
 </script>
