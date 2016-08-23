@@ -9,6 +9,7 @@ import ru.gradis.sovzond.jdbc.sql.SqlStorage;
 import ru.gradis.sovzond.model.dao.XmlExportDAO;
 import ru.gradis.sovzond.model.domain.FileVO;
 
+
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +35,10 @@ public class XmlExportDAOImpl implements XmlExportDAO {
 
 		Map<String, Object> inParamMap = new HashMap<String, Object>();
 		inParamMap.put("i_text", regularEx);
+		inParamMap.put("i_scheme_id", 10);
 		MapSqlParameterSource in = new MapSqlParameterSource().addValues(inParamMap);
 
-		List<FileVO> files = namedParameterJdbcTemplate.query(SqlStorage.GET_XML_FILES, in, new FilesRowMapper());
+		List<FileVO> files = namedParameterJdbcTemplate.query(SqlStorage.GET_XML_FILES2, in, new FilesRowMapper());
 
 		return files;
 	}
